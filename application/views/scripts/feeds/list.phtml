@@ -1,0 +1,59 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <?php
+            echo "<a class='navbar-brand' href='".$this->baseUrl()."/feeds/index/'> Home </a>"; ?>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+        <li>
+        <?php
+            echo "<a href='".$this->baseUrl()."/feeds/add/'> Add new RSS link </a>"; ?>
+        </li>
+        
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+<div class="container ">
+
+<?php
+
+	
+	echo "<h3 style= 'color:blue'><b> ".$this->channel->title()."  </b></h3>";
+	
+    echo "<br>";
+   	echo "<h5><b> ".$this->channel->description()."  </b></h5>";
+    echo "<br>";
+    
+    foreach ($this->channel as $item) 
+    {
+        
+        echo "<div style='background-color:#d3d3d3 '>";
+      	echo "<div style='margin-left:30px'>";
+      	echo "<a style='font-size:20px' href='".$item->link()."'> ".$item->title()."</a>" . "\n";
+      	echo "</br>";
+      	echo "<b> Date:</b>";
+     	echo $item->pubDate() . "\n";
+      	echo "</div>";
+      	echo "<hr>";
+      	echo "</div>";
+
+
+
+    }
+?>
+</div>
